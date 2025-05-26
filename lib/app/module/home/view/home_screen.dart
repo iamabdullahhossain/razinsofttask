@@ -10,21 +10,33 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.only(left: 20, right: 20, top: 15),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              HomeAppbar(),
-              Gap(35),
-              HomeSummary(),
-              Gap(35),
-              HomeTask()
-            ],
+          clipBehavior: Clip.antiAlias,
+          decoration: ShapeDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.white, const Color(0xFFDFE3F0)],
+              begin: Alignment(0.50, -0.00),
+              end: Alignment(0.50, 1.00),
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
+          child: Container(
+            margin: EdgeInsets.only(left: 20, right: 20, top: 15),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                HomeAppbar(),
+                Gap(35),
+                HomeSummary(),
+                Gap(35),
+                HomeTask(),
+              ],
+            ),
           ),
         ),
       ),

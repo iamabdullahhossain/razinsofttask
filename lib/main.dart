@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:razinsoft/app/module/home/view/home_screen.dart';
+import 'package:razinsoft/app/module/new_task/view/new_task_screen.dart';
 import 'package:razinsoft/app/shared/controller/screen_controller/screen_controller.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         fontFamily: 'Poppins',
       ),
-      home: const HomeScreen(),
+      home: const NewTaskScreen(),
       debugShowCheckedModeBanner: false,
       builder: (context, child) {
         ScreenController.sizeInitialization(context);
