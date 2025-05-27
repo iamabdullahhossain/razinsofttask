@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:horizontalcalender/horizontalcalendar.dart';
 import 'package:razinsoft/app/module/new_task/view/sections/appbar/newtask_appbar.dart';
-import 'package:razinsoft/app/module/new_task/view/sections/create_task/create_task.dart';
+import 'package:razinsoft/app/module/view_task/view/sections/appbar/viewtask_appbar.dart';
 import 'package:razinsoft/app/shared/controller/screen_controller/screen_controller.dart';
 
-class NewTaskScreen extends StatefulWidget {
-  const NewTaskScreen({super.key});
+import '../../new_task/view/sections/create_task/create_task.dart';
+
+class ViewTaskScreen extends StatefulWidget {
+  const ViewTaskScreen({super.key});
 
   @override
-  State<NewTaskScreen> createState() => _NewTaskScreenState();
+  State<ViewTaskScreen> createState() => _ViewTaskScreenState();
 }
 
-class _NewTaskScreenState extends State<NewTaskScreen> {
+class _ViewTaskScreenState extends State<ViewTaskScreen> {
   @override
   Widget build(BuildContext context) {
-    final FixedExtentScrollController itemController =
-        FixedExtentScrollController();
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -43,10 +42,12 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-                  child: NewtaskAppbar(),
+                  child: ViewtaskAppbar(),
                 ),
-                Gap(70),
-                CreateTask(),
+                Gap(100),
+                CreateTask()
+
+
 
               ],
             ),

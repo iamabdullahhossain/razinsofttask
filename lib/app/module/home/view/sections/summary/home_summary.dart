@@ -31,7 +31,6 @@ class HomeSummary extends StatelessWidget {
             Expanded(
               child: Container(
                 padding: EdgeInsets.all(10),
-
                 width: ScreenController.screenWidth * 0.5,
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(

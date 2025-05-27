@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:razinsoft/app/shared/controller/screen_controller/screen_controller.dart';
 
 import '../../../../../core/values/app_colors.dart';
 
@@ -106,14 +108,116 @@ class _CreateTaskState extends State<CreateTask> {
                 ),
               ),
 
-              Container(
-                height: 100,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: Color(0xFFDCE0EE)), // Gray border
-                  color: Colors.white,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Start Date",
+                          style: TextStyle(
+                            color: const Color(0xFF0D101C),
+                            fontSize: 14,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w500,
+                            height: 1.30,
+                          ),
+                        ),
+                        Gap(10),
+                        Container(
+                          height: 48,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(color: Color(0xFFDCE0EE)),
+                            // Gray border
+                            color: Colors.white,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "October, 15, 2025",
+                                style: TextStyle(
+                                  color: const Color(0xFF6D7491),
+                                  fontSize: 12,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w400,
+                                  height: 1.40,
+                                ),
+                              ),
+                              Gap(10),
+                              Image.asset(
+                                "assets/icons/calendar.png",
+                                color: AppColors.buttonColor,
+                                width: 16,
+                                height: 16,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Gap(10),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "End Date",
+                          style: TextStyle(
+                            color: const Color(0xFF0D101C),
+                            fontSize: 14,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w500,
+                            height: 1.30,
+                          ),
+                        ),
+                        Gap(10),
+                        Container(
+                          height: 48,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(color: Color(0xFFDCE0EE)),
+                            // Gray border
+                            color: Colors.white,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "October, 15, 2025",
+                                style: TextStyle(
+                                  color: const Color(0xFF6D7491),
+                                  fontSize: 12,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w400,
+                                  height: 1.40,
+                                ),
+                              ),
+                              Gap(10),
+                              Image.asset(
+                                "assets/icons/calendar.png",
+                                color: AppColors.buttonColor,
+                                width: 16,
+                                height: 16,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
+              Gap(10),
 
               Container(
                 height: 50,
@@ -121,7 +225,7 @@ class _CreateTaskState extends State<CreateTask> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(color: Color(0xFFDCE0EE)), // Gray border
-                   color: AppColors.buttonColor,
+                  color: AppColors.buttonColor,
                 ),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
