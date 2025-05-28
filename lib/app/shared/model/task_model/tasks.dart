@@ -29,8 +29,8 @@ class Tasks extends HiveObject {
   factory Tasks.create({
     required String? title,
     required String? description,
-    DateTime? startDate,
-    DateTime? endDate
+    required DateTime? startDate,
+   required DateTime? endDate
   })=>
       Tasks(id: Uuid().v1(),
           title: title ?? "",

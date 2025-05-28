@@ -24,7 +24,7 @@ class AlltaskAppbar extends StatelessWidget {
         ),),
         InkWell(
           onTap: (){
-            Get.to(ViewTaskScreen());
+
           },
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),

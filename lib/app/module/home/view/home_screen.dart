@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:razinsoft/app/module/home/controller/home_controller.dart';
 import 'package:razinsoft/app/module/home/view/sections/appbar/home_appbar.dart';
 import 'package:razinsoft/app/module/home/view/sections/summary/home_summary.dart';
 import 'package:razinsoft/app/module/home/view/sections/tasks/home_task.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+
+  final controller = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +37,7 @@ class HomeScreen extends StatelessWidget {
               children: [
                 HomeAppbar(),
                 Gap(35),
-                HomeSummary(),
+                HomeSummary(controller: controller,),
                 Gap(35),
                 HomeTask(),
               ],

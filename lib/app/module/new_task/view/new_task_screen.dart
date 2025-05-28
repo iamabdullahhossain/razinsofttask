@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:horizontalcalender/horizontalcalendar.dart';
+import 'package:razinsoft/app/module/new_task/controller/new_task_controller.dart';
 import 'package:razinsoft/app/module/new_task/view/sections/appbar/newtask_appbar.dart';
 import 'package:razinsoft/app/module/new_task/view/sections/create_task/create_task.dart';
 import 'package:razinsoft/app/shared/controller/screen_controller/screen_controller.dart';
@@ -17,6 +20,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
   Widget build(BuildContext context) {
     final FixedExtentScrollController itemController =
         FixedExtentScrollController();
+    final controller = Get.put(NewTaskController());
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -46,8 +50,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                   child: NewtaskAppbar(),
                 ),
                 Gap(70),
-                CreateTask(),
-
+                CreateTask(controller: controller,),
               ],
             ),
           ),

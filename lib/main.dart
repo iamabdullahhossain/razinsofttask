@@ -6,12 +6,17 @@ import 'package:razinsoft/app/module/all_task/view/all_task_screen.dart';
 import 'package:razinsoft/app/module/home/view/home_screen.dart';
 import 'package:razinsoft/app/module/new_task/view/new_task_screen.dart';
 import 'package:razinsoft/app/shared/controller/screen_controller/screen_controller.dart';
+import 'package:razinsoft/app/shared/model/task_model/tasks.dart';
+import 'package:razinsoft/app/shared/repository/task_repository.dart';
 import 'package:razinsoft/app/shared/view/bottom_navigation/bottom_navigation_screen.dart';
 
 void main() async{
 
   await Hive.initFlutter();
-  var box = await Hive.openBox('todo');
+
+  Hive.registerAdapter<Tasks>(TasksAdapter());
+
+  var box = await Hive.openBox<Tasks>(TaskRepository.boxName);
   runApp(const MyApp());
 }
 

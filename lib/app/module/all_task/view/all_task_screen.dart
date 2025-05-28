@@ -43,7 +43,7 @@ class _AllTaskScreenState extends State<AllTaskScreen> {
                 AlltaskCalander(),
                 Gap(10),
                 Expanded(child: AlltaskShow()),
-                Gap(10)
+                Gap(10),
               ],
             ),
           ),

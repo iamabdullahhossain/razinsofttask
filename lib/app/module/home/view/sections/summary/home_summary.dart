@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:gap/gap.dart';
 import 'package:razinsoft/app/core/values/app_colors.dart';
+import 'package:razinsoft/app/module/home/controller/home_controller.dart';
 import 'package:razinsoft/app/shared/controller/screen_controller/screen_controller.dart';
 
 class HomeSummary extends StatelessWidget {
-  const HomeSummary({super.key});
+  HomeController controller;
+
+   HomeSummary({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +65,7 @@ class HomeSummary extends StatelessWidget {
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500,
                         height: 1.30,
-                        letterSpacing: -0.48,
+
                       ),
                     ),
                   ],
@@ -104,7 +107,7 @@ class HomeSummary extends StatelessWidget {
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500,
                         height: 1.30,
-                        letterSpacing: -0.48,
+
                       ),
                     ),
                   ],

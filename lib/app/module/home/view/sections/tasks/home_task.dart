@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:razinsoft/app/module/home/controller/home_controller.dart';
 import 'package:razinsoft/app/module/home/view/sections/tasks/tabs/all_tasks.dart';
 import 'package:razinsoft/app/module/home/view/sections/tasks/tabs/completed_tasks.dart';
 import 'package:razinsoft/app/shared/controller/screen_controller/screen_controller.dart';
@@ -14,6 +17,7 @@ class HomeTask extends StatefulWidget {
 }
 
 class _HomeTaskState extends State<HomeTask> {
+  final controller = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -58,7 +62,7 @@ class _HomeTaskState extends State<HomeTask> {
           ),
           SizedBox(
             height: ScreenController.screenHeight*0.5,
-              child: TabBarView(children: [AllTasks(), CompletedTasks()])),
+              child: TabBarView(children: [AllTasks(controller: controller,), CompletedTasks()])),
         ],
       ),
     );

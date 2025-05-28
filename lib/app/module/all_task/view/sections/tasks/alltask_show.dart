@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:intl/intl.dart';
+
+import '../../../../home/controller/home_controller.dart';
+import '../../../controller/calander_controller/calander_controller.dart';
 
 class AlltaskShow extends StatefulWidget {
   const AlltaskShow({super.key});
@@ -9,11 +15,26 @@ class AlltaskShow extends StatefulWidget {
 }
 
 class _AlltaskShowState extends State<AlltaskShow> {
+  final homeController = Get.find<HomeController>();
+  final calanderController = Get.find<CalanderController>();
+
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, items){
+    return Obx(() {
+      final selectedDate = calanderController.selectedDate.value;
+      final filteredTasks =
+          homeController.tasks.where((task) {
+            // Compare only date part
+            return isSameDate(task.startDate, selectedDate);
+          }).toList();
+
+      if (filteredTasks.isEmpty) {
+        return Center(child: Text('No task found'));
+      }
+      return ListView.builder(
+        itemCount: filteredTasks.length,
+        itemBuilder: (context, index) {
+          final task = filteredTasks[index];
           return Container(
             width: double.infinity,
 
@@ -32,7 +53,7 @@ class _AlltaskShowState extends State<AlltaskShow> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Homepage Redesign",
+                    task.title,
                     style: TextStyle(
                       color: const Color(0xFF0D101C),
                       fontSize: 16,
@@ -43,7 +64,8 @@ class _AlltaskShowState extends State<AlltaskShow> {
                   ),
                   Gap(5),
                   Text(
-                    'Redesign the homepage of our website to improve user engagement and align with our updated branding guidelines. Focus on creating an intuitive user interface with enhanced visual appeal.',
+                    // 'Redesign the homepage of our website to improve user engagement and align with our updated branding guidelines. Focus on creating an intuitive user interface with enhanced visual appeal.',
+                    task.description,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -68,7 +90,7 @@ class _AlltaskShowState extends State<AlltaskShow> {
                             width: 12,
                           ),
                           Text(
-                            'October 15, 2023',
+                            DateFormat('MMMM dd, yyyy').format(task.startDate),
                             style: TextStyle(
                               color: const Color(0xFF6D7491),
                               fontSize: 10,
@@ -79,14 +101,20 @@ class _AlltaskShowState extends State<AlltaskShow> {
                           ),
                         ],
                       ),
-
-
                     ],
                   ),
                 ],
               ),
             ),
           );
-        });
+        },
+      );
+    });
+  }
+
+  bool isSameDate(DateTime date1, DateTime date2) {
+    return date1.year == date2.year &&
+        date1.month == date2.month &&
+        date1.day == date2.day;
   }
 }

@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:intl/intl.dart';
-import 'package:razinsoft/app/module/new_task/controller/new_task_controller.dart';
-import 'package:razinsoft/app/shared/controller/screen_controller/screen_controller.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:razinsoft/app/module/view_task/controller/view_task_controller/view_task_controller.dart';
 
 import '../../../../../core/values/app_colors.dart';
-import 'datepicker.dart';
+import '../../../../new_task/view/sections/create_task/datepicker.dart';
 
-class CreateTask extends StatefulWidget {
-  CreateTask({super.key, required this.controller});
+class ViewDetails extends StatefulWidget {
+  ViewDetails({super.key, required this.controller});
 
-  NewTaskController controller;
+  ViewTaskController controller;
 
   @override
-  State<CreateTask> createState() => _CreateTaskState();
+  State<ViewDetails> createState() => _ViewDetailsState();
 }
 
-class _CreateTaskState extends State<CreateTask> {
+class _ViewDetailsState extends State<ViewDetails> {
   @override
   Widget build(BuildContext context) {
     final controller = widget.controller;
@@ -58,7 +56,6 @@ class _CreateTaskState extends State<CreateTask> {
                   color: Colors.white,
                 ),
                 child: TextField(
-                  // controller: controller.patientNameController.value,
                   controller: controller.titleController,
                   cursorColor: AppColors.blackBold,
                   /* onChanged: (value) =>
@@ -98,8 +95,7 @@ class _CreateTaskState extends State<CreateTask> {
                   color: Colors.white,
                 ),
                 child: TextField(
-                  // controller: controller.patientNameController.value,
-                  controller: controller.descriptionController,
+                   controller: controller.descriptionController,
                   cursorColor: AppColors.blackBold,
                   /* onChanged: (value) =>
                   controller.patientName.value = value,*/
@@ -118,13 +114,13 @@ class _CreateTaskState extends State<CreateTask> {
                 ),
               ),
 
-              Row(
+                Row(
                 children: [
                   Expanded(
                     child: datePicker(
                       "Start Date",
                       controller.startDate,
-                      () async {
+                          () async {
                         DateTime? picked = await showDatePicker(
                           context: context,
                           initialDate: DateTime.now(),
@@ -140,7 +136,7 @@ class _CreateTaskState extends State<CreateTask> {
                     child: datePicker(
                       "End Date",
                       controller.endDate,
-                      () async {
+                          () async {
                         DateTime? picked = await showDatePicker(
                           context: context,
                           initialDate: DateTime.now(),
@@ -153,7 +149,6 @@ class _CreateTaskState extends State<CreateTask> {
                   ),
                 ],
               ),
-
               Gap(10),
 
               Container(
@@ -172,10 +167,11 @@ class _CreateTaskState extends State<CreateTask> {
                     ),
                   ),
                   onPressed: () {
-                    controller.addTask();
+                    controller.updateTask();
+                   Get.snackbar("Success", "Task Updated Successfully");
                   },
                   child: Text(
-                    "Create new tasks",
+                    "Complete",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 14,
@@ -192,6 +188,4 @@ class _CreateTaskState extends State<CreateTask> {
       ),
     );
   }
-
-
 }
