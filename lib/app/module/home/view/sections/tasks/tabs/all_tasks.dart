@@ -110,7 +110,7 @@ class _AllTasksState extends State<AllTasks> {
                             ),
                           ],
                         ),
-                        Text(tasks.isCompleted.toString())
+                       // Text(tasks.isCompleted.toString())
 
                       ],
                     ),

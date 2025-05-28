@@ -62,7 +62,7 @@ class _HomeTaskState extends State<HomeTask> {
           ),
           SizedBox(
             height: ScreenController.screenHeight*0.5,
-              child: TabBarView(children: [AllTasks(controller: controller,), CompletedTasks()])),
+              child: TabBarView(children: [AllTasks(controller: controller,), CompletedTasks(controller: controller,)])),
         ],
       ),
     );
